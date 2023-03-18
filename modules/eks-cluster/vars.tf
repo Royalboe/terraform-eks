@@ -17,7 +17,6 @@ variable "priv_subnet_id_2"{ type = string }
 variable "pub_subnet_id_1"{ type = string }
 variable "pub_subnet_id_2"{ type = string }
 
-
 variable "namespace" {
   type        = string
   description = "Namespace, which could be your organization name, e.g. 'eg' or 'cp'"

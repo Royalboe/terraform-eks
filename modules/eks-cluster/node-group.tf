@@ -6,11 +6,11 @@ data "aws_ssm_parameter" "eks_ami_release_version" {
 
  resource "aws_eks_node_group" "private-worker-node-group" {
   cluster_name  = aws_eks_cluster.eks.name
-  node_group_name = "${namespace}-workernodes"
+  node_group_name = "${var.namespace}-workernodes"
   node_role_arn  = aws_iam_role.workernodes.arn
   version = aws_eks_cluster.eks.version
   release_version = data.aws_ssm_parameter.eks_ami_release_version.value
-  subnet_ids   = [var.private_subnet_id_1, var.private_subnet_id_2]
+  subnet_ids   = [var.priv_subnet_id_1, var.priv_subnet_id_2]
   instance_types = ["t3.xlarge"]
   capacity_type = "ON_DEMAND"
   disk_size = 100
@@ -26,7 +26,7 @@ data "aws_ssm_parameter" "eks_ami_release_version" {
 
   update_config {
     max_unavailable = 1
-    max_unavailable_percentage = 50
+    # max_unavailable_percentage = 50
   }
  
   depends_on = [

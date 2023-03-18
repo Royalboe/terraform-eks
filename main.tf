@@ -19,10 +19,9 @@ module "eks-cluster" {
   pub_subnets = module.network.public_subnets
   priv_subnets = module.network.private_subnets
   availability_zones = var.availability_zones
-  proj_tag = var.proj-tag
   priv_subnet_id_1 = module.network.private_subnet_id_1
   priv_subnet_id_2 = module.network.private_subnet_id_2
-  pub_subnet_id_1 = module.network.public_subnet_id_1
-  pub_subnet_id_2 = module.network.public_subnet_id_2
+  pub_subnet_id_1 = module.network.pub_subnet_1
+  pub_subnet_id_2 = module.network.pub_subnet_2
   key_name = module.ssh_key.key_name
 }
